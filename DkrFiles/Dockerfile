@@ -1,25 +1,42 @@
-# Use an official Python runtime as the base image
-FROM python:3.9-slim
+# ========================
+# Stage 1: Build dependencies
+# ========================
+FROM python:3.9-slim AS builder
 
-# Set the working directory in the container
 WORKDIR /app
 
-# install required packages for system
+# Install build tools only in this stage
 RUN apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y gcc default-libmysqlclient-dev pkg-config \
+    && apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev pkg-config \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy the requirements file into the container
+# Copy requirement files
 COPY requirements.txt .
 
-# Install app dependencies
-RUN pip install mysqlclient
-RUN pip install --no-cache-dir -r requirements.txt
+# Install dependencies into a wheelhouse (prebuilt wheels)
+RUN pip install --upgrade pip \
+    && pip wheel --no-cache-dir --no-deps -r requirements.txt -w /wheels
 
-# Copy the rest of the application code
+
+# ========================
+# Stage 2: Runtime (final image)
+# ========================
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Install only runtime libraries (no compilers)
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends default-libmysqlclient-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy wheels from builder and install
+COPY --from=builder /wheels /wheels
+RUN pip install --no-cache-dir /wheels/*
+
+# Copy app code
 COPY . .
 
-# Specify the command to run your application
+# Default command
 CMD ["python", "app.py"]
 
