@@ -1,0 +1,4 @@
+REPOSITORY   TAG         IMAGE ID       CREATED             SIZE
+<none>       <none>      8ad2d6954b7f   8 minutes ago       127MB
+<none>       <none>      b4c29504dd84   About an hour ago   165MB
+python       3.11-slim   c4640ec0986f   5 weeks ago         125MB
