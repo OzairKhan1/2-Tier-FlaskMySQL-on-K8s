@@ -1,8 +1,0 @@
-REPOSITORY        TAG         IMAGE ID       CREATED              SIZE
-mysql-flask-app   latest      69d597bcece0   About a minute ago   352MB
-<none>            <none>      8ad2d6954b7f   4 minutes ago        127MB
-<none>            <none>      1edc28e5202d   4 minutes ago        353MB
-<none>            <none>      b4c29504dd84   About an hour ago    165MB
-<none>            <none>      460f3f8c8adb   About an hour ago    353MB
-python            3.9-slim    56cea0119ab6   5 weeks ago          120MB
-python            3.11-slim   c4640ec0986f   5 weeks ago          125MB
