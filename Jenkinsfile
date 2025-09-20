@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                echo 'Hello World! Just to Check Webhooks'
+                echo 'Hello World! Just for Checking Webhook'
             }
         }
     }
