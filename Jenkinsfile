@@ -1,6 +1,6 @@
 @Library("jShrLibs") _
 pipeline {
-    agent {label "docNode"}
+    agent any
 
     stages {
         stage('Hello') {
