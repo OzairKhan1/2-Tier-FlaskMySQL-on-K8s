@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App new🚀</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to right, #141e30, #243b55); /* Dark modern blue gradient */
+            color: #fff;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            background: #1e1e2f;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            margin-left: 340px; /* More push to the right for tool descriptions */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Big Header */
+        .main-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #00c6ff; /* Bright cyan */
+            margin-bottom: 10px;
+        }
+
+        /* Small sub-header */
+        .sub-title {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+
+        /* Creator */
+        .creator {
+            font-size: 1rem;
+            color: #ccc;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .messages {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #2a2a3d;
+            border-radius: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .messages p {
+            padding: 10px;
+            background: #33334d;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #444;
+            background: #1a1a2e;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        input[type="text"]:focus {
+            border-color: #00c6ff;
+            box-shadow: 0 0 12px rgba(0, 198, 255, 0.6);
+            outline: none;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(135deg, #0072ff, #00c6ff);
+            box-shadow: 0 0 20px rgba(0, 198, 255, 0.7);
+            transform: translateY(-2px);
+        }
+
+        /* Tools Sidebar */
+        .tools-sidebar {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 300px;
+            background: #1e1e2f;
+            border-radius: 0 12px 12px 0;
+            padding: 20px;
+            box-shadow: 4px 0 12px rgba(0, 0, 0, 0.6);
+            border-right: 2px solid #00c6ff;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        .tools-sidebar h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #00c6ff;
+            text-align: center;
+        }
+
+        .tools-sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .tools-sidebar ul li {
+            margin: 10px 0;
+            padding: 10px;
+            background: #2a2a3d;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tools-sidebar ul li img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Footer message */
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .footer strong {
+            color: #00c6ff;
+        }
+
+        @media (max-width: 900px) {
+            .tools-sidebar {
+                display: none;
+            }
+            .container {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Tools Sidebar on the Left with Logos + 2-word taglines -->
+    <div class="tools-sidebar">
+        <h2>🛠 Tools Used</h2>
+        <ul>
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"> GitHub + Webhooks <em>(Code Hosting)</em></li>
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg"> Jenkins + Shared Libraries <em>(CI/CD Engine)</em></li>
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"> Docker <em>(App Container)</em></li>
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"> DockerHub <em>(Image Registry)</em></li>
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg"> Kubernetes (k3s) <em>(Cluster Orchestrator)</em></li>
+            <li><img src="https://argo-cd.readthedocs.io/en/stable/assets/logo.png" style="width:20px;"> Argo CD <em>(GitOps Delivery)</em></li>
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg"> Terraform <em>(Infra Code)</em></li>
+            <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg"> AWS <em>(Cloud Provider)</em></li>
+            <li><img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" style="width:20px;"> Email Integration <em>(Smart Alerts)</em></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1 class="main-title">2 Tier App 🚀</h1>
+        <h2 class="sub-title">Flask + MySQL</h2>
+        <p class="creator">Created by <strong>Ozair Khan</strong> ✨ Innovating DevOps Experiences!</p>
+
+        <div class="messages">
+            {% for message in messages %}
+                <p>{{ message[0] }}</p>
+            {% endfor %}
+        </div>
+
+        <form id="messageForm">
+            <input type="text" name="new_message" placeholder="Type your message..." required>
+            <input type="submit" value="Send">
+        </form>
+
+        <div class="footer">
+            Thanks to <strong>Abhishek Veeramalla</strong> and <strong>Shubham Londhe</strong> for their Guidance 🙏
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#messageForm").on("submit", function(event) {
+                event.preventDefault();
+                let messageInput = $("input[name='new_message']");
+                let message = messageInput.val().trim();
+
+                if (message === "") {
+                    alert("Message cannot be empty!");
+                    return;
+                }
+
+                $.ajax({
+                    url: "/submit",
+                    type: "POST",
+                    data: { new_message: message },
+                    success: function(response) {
+                        if (response && response.message) {
+                            $(".messages").append($("<p>").text(response.message));
+                            messageInput.val("");
+                        } else {
+                            console.error("Unexpected response format:", response);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX Error:", status, error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
