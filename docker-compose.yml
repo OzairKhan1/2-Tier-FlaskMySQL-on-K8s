@@ -4,13 +4,10 @@ services:
   mysql:
     image: mysql:5.7
     container_name: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: devops
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: admin
+    env_file:
+      - mysql.env
     volumes:
-      - mysql-data-new:/var/lib/mysql
+      - mysql-host-storage:/var/lib/mysql
     networks:
       - twotier
     healthcheck:
@@ -21,15 +18,12 @@ services:
       start_period: 30s
 
   flask-app:
-    image: ozairkhan1/flask-mysql-app:latest
+    image: ozairkhan1/flask-mysql-app:v1
     container_name: flask-app
     ports:
       - "5000:5000"
-    environment:
-      MYSQL_HOST: mysql
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: admin
-      MYSQL_DB: devops
+    env_file:
+      - flask.env
     depends_on:
       mysql:
         condition: service_healthy
@@ -47,5 +41,5 @@ networks:
   twotier:
 
 volumes:
-  mysql-data-new:
+  mysql-host-storage:
 
