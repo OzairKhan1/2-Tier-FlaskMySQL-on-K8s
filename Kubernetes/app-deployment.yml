@@ -22,7 +22,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: mysql-config
-                  key: mysql-database       # Still from ConfigMap or hardcoded for now
+                  key: mysql-host       # Still from ConfigMap or hardcoded for now
             - name: MYSQL_USER
               valueFrom:
                 secretKeyRef:
@@ -35,8 +35,8 @@ spec:
                   key: mysql-password
             - name: MYSQL_DB
               valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
+                configMapKeyRef:
+                  name: mysql-config
                   key: mysql-db
           ports:
             - containerPort: 5000
