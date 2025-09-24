@@ -4,7 +4,7 @@ metadata:
   name: two-tier-app-service
 spec:
   selector:
-    app: two-tier-app
+    app: flask-mysql-app
   ports:
     - protocol: TCP
       port: 80
