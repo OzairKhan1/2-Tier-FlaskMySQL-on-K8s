@@ -59,7 +59,8 @@ pipeline {
                 }
             }
         }
-        emailNotify()
+        
         
     }
+    emailNotify()
 }
