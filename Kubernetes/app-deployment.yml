@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: flask-mysql-app
-          image: ozairkhan1/flask-mysql-app:v33
+          image: ozairkhan1/flask-mysql-app:v34
           env:
             - name: MYSQL_HOST
               valueFrom:
