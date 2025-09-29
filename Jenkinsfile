@@ -8,7 +8,7 @@ pipeline {
     }
 
     stages {
-        stage('Git Cloning') {
+        stage('Git Cloning.') {
             steps {
                 script {
                     gitClone("https://github.com/OzairKhan1/2-Tier-FlaskMySQL-on-K8s.git", "main")
