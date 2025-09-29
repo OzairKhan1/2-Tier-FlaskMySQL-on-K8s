@@ -21,7 +21,7 @@ pipeline {
                 script {
                     dir("DkrFiles") {
                         //sh "docker build -t ${IMAGE_NAME}/v${BUILD_NUMBER} ."
-                        sh "docker tag ${IMAGE_NAME}:v14 ${IMAGE_NAME}:v${BUILD_NUMBER}"
+                        sh "docker tag ${IMAGE_NAME}:v50 ${IMAGE_NAME}:v${BUILD_NUMBER}"
                     }
                 }
             }
@@ -30,37 +30,19 @@ pipeline {
         stage('Pushing the Docker Image to DockerHub') {
             steps {
                 script {
-                    dockerPush("${IMAGE_NAME}:v${BUILD_NUMBER}", "dockerHub-cred")
+                    dockerPush("${IMAGE_NAME}:v${BUILD_NUMBER}", "dockerHub")
                 }
             }
         }
-
-        stage('Updating the Github Manifest File') {
-            steps {
-                script {
-                    dir("Kubernetes") {
-                        sh """
-                            sed -i "s|\\(image: ${IMAGE_NAME}:\\).*|\\1v${BUILD_NUMBER}|" app-deployment.yml
-                        """
-                    }
-                }
-            }
-        }
-
-        stage('Pushing the changes into manifest file') {
-            steps {
-                script {
-                        gitPush(
-                            "https://github.com/OzairKhan1/2-Tier-FlaskMySQL-on-K8s.git",
-                            "main",
-                            "gitHub-Cred",
-                            "Automated From Jenkins v${BUILD_NUMBER}"
-                        )
-                }
-            }
-        }
-        
-        
     }
-   
+
+    post {
+        success {
+            build job: 'updateManifst-deployArgoCd',
+                  parameters: [
+                      string(name: 'BUILD_NUMBER', value: "${BUILD_NUMBER}")
+                  ]
+        }
+    }
 }
+
