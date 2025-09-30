@@ -30,7 +30,7 @@ pipeline {
         stage('Pushing the Docker Image to DockerHub') {
             steps {
                 script {
-                    dockerPush("${IMAGE_NAME}:v${BUILD_NUMBER}", "dockerHub")
+                    dockerPush("${IMAGE_NAME}:v${BUILD_NUMBER}", "dockerHub-creds")
                 }
             }
         }
