@@ -20,8 +20,8 @@ pipeline {
             steps {
                 script {
                     dir("DkrFiles") {
-                        //sh "docker build -t ${IMAGE_NAME}/v${BUILD_NUMBER} ."
-                        sh "docker tag ${IMAGE_NAME}:v50 ${IMAGE_NAME}:v${BUILD_NUMBER}"
+                        sh "docker build -t ${IMAGE_NAME}/v${BUILD_NUMBER} ."
+                        //sh "docker tag ${IMAGE_NAME}:v50 ${IMAGE_NAME}:v${BUILD_NUMBER}"
                     }
                 }
             }
