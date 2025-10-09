@@ -1,7 +1,7 @@
 @Library('jShrLibs') _
 
 pipeline {
-    agent { label 'docNode' }
+    agent any
 
     environment {
         IMAGE_NAME = "ozairkhan1/flask-mysql-app"
