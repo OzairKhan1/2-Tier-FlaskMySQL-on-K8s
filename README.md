@@ -26,6 +26,7 @@ The project follows a **GitOps-driven workflow**, where every change in GitHub i
   <img src="https://argo-cd.readthedocs.io/en/stable/assets/logo.png" width="40" title="Argo CD"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" width="40" title="Terraform"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" width="50" title="AWS"/>
+  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" width="40" title="Prometheus"/> <img      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" width="40" title="Grafana"/> <img src="https://cdn-icons-
   <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" width="40" title="Email Integration"/>
 </p>
 
