@@ -26,8 +26,9 @@ The project follows a **GitOps-driven workflow**, where every change in GitHub i
   <img src="https://argo-cd.readthedocs.io/en/stable/assets/logo.png" width="40" title="Argo CD"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" width="40" title="Terraform"/>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" width="50" title="AWS"/>
-  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" width="40" title="Prometheus"/> <img      src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" width="40" title="Grafana"/> <img src="https://cdn-icons-
-  <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" width="40" title="Email Integration"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" width="40" title="Prometheus"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" width="40" title="Grafana"/>
+
 </p>
 
 **Stack Breakdown**  
@@ -50,24 +51,30 @@ The project follows a **GitOps-driven workflow**, where every change in GitHub i
 - ✅ Kubernetes (k3s) deployment for scalability and resilience  
 - ✅ GitOps workflow powered by Argo CD  
 - ✅ Infrastructure managed via Terraform on AWS  
+- ✅ Prometheus for application and infrastructure monitoring  
+- ✅ Grafana for real-time visualization and dashboards  
 - ✅ Email notifications for deployment & monitoring alerts  
+ 
 
 ---
 
 ## 🔄 Workflow  
 
-1. **Developer commits code** → GitHub repo  
-2. **Webhook triggers Jenkins** → CI/CD pipeline builds & pushes Docker image to DockerHub  
-3. **Terraform provisions AWS infrastructure** (EC2, RDS, etc.)  
-4. **Argo CD syncs manifests** from GitHub → Kubernetes cluster (k3s)  
-5. **Application deployed** and monitored  
-6. **Email alerts** sent on successful/failed deployments  
+## 🔄 Workflow  
+
+1. **Terraform provisions AWS infrastructure** → Creates EC2 instances, security groups, and networking setup  
+2. **Jenkins pipeline triggers** → Builds Flask app, runs tests, and creates Docker image  
+3. **Docker image pushed to DockerHub** → Stores versioned application containers  
+4. **Kubernetes (k3s) cluster deploys application** → Using manifests stored in GitHub  
+5. **Argo CD performs GitOps sync** → Continuously reconciles the Git state with the live cluster  
+6. **Prometheus collects metrics** → Monitors application and infrastructure performance  
+7. **Grafana visualizes metrics** → Displays dashboards and trends in real time  
+8. **Email notifications sent** → Alerts on successful deployments or monitoring thresholds  
+
 
 ---
 
 ## 📊 Architecture Diagram  
 
-> *(Add an image here if available, e.g., `docs/architecture.png`)*  
 
-# Run with Docker
-docker run -p 5000:5000 flask-mysql-app
+
