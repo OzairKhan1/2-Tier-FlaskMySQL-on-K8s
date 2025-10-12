@@ -73,13 +73,19 @@ The project follows a **GitOps-driven workflow**, where every change in GitHub i
 
 
 ---
-**Flask-MySQL App**  
+<p align="center">
+  <b>Flask-MySQL App</b>
+</p> 
 ![Flask-Mysql-App](ProjectImages/App.png)  
 
-**ArgoCD Setup**  
+<p align="center">
+  <b>ArgoCd Setup</b>
+</p>  
 ![Argocd](ProjectImages/ArgoCd.png)  
   
-**Grafana Dashboard**  
+<p align="center">
+  <b>Grafana Dashboard</b>
+</p> 
 ![Grafana](ProjectImages/Grafana.png)  
 
 
