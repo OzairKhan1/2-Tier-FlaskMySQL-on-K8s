@@ -75,11 +75,15 @@ The project follows a **GitOps-driven workflow**, where every change in GitHub i
 ---
 
 ## 📊 Architecture Diagram  
-![Architecture Diagram](ProjectImages/Architecture.png)
+![Architecture Diagram](ProjectImages/Architecture.png)  
+**Architecture Diagram**
 
-![Flask-Mysql-App](ProjectImages/App.png)
+![Flask-Mysql-App](ProjectImages/App.png)  
+**Flask-MySQL App**
 
-![Argocd](ProjectImages/ArgoCd.png)
+![Argocd](ProjectImages/ArgoCd.png)  
+**ArgoCD Setup**
 
-![Grafana](ProjectImages/Grafana.png)
+![Grafana](ProjectImages/Grafana.png)  
+**Grafana Dashboard**
 
