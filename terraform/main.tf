@@ -1,5 +1,5 @@
-resource "aws_key_pair" "terraKey" {
-  key_name   = "terraKey"
+resource "aws_key_pair" "terraformKey" {
+  key_name   = "terraformKey"
   public_key = file("/home/ubuntu/.ssh/id_ed25519.pub")
 }
 
@@ -9,8 +9,8 @@ resource "aws_default_vpc" "myVpc" {
   }
 }
 
-resource "aws_security_group" "mySg" {
-  name        = "FlaskMysqlSg"
+resource "aws_security_group" "mySgroup" {
+  name        = "FlaskMysqlSgroup"
   description = "This will be used for Flask-Mysql-App"
   vpc_id      = aws_default_vpc.myVpc.id
 
@@ -23,6 +23,7 @@ resource "aws_security_group" "mySg" {
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+    description = "SSh"
   }
 
   ingress {
@@ -30,13 +31,15 @@ resource "aws_security_group" "mySg" {
     to_port     = 3306
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+    description = "mySql"
   }
 
   ingress {
-    from_port   = 31004
-    to_port     = 31004
+    from_port   = 30004
+    to_port     = 30004
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+    description = "NodePort for FlaskApp"
   }
 
   ingress {
@@ -44,6 +47,7 @@ resource "aws_security_group" "mySg" {
     to_port     = 5000
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+     description = "flaskApp port"
   }
 
   ingress {
@@ -51,6 +55,23 @@ resource "aws_security_group" "mySg" {
     to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
+    description = "Jenkins"
+  }
+
+  ingress {
+    from_port   = 3000
+    to_port     = 3000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Grafana"
+  }
+
+  ingress {
+    from_port   = 9090
+    to_port     = 9090
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "Prometheus"
   }
 
   egress {
@@ -62,8 +83,8 @@ resource "aws_security_group" "mySg" {
 }
 
 resource "aws_instance" "terraInstance" {
-  key_name               = aws_key_pair.terraKey.key_name
-  vpc_security_group_ids = [aws_security_group.mySg.id]
+  key_name               = aws_key_pair.terraformKey.key_name
+  vpc_security_group_ids = [aws_security_group.mySgroup.id]
   ami                    = var.ec2_ami_id
   instance_type          = var.ec2_type
 
@@ -74,7 +95,6 @@ resource "aws_instance" "terraInstance" {
   }
 
   tags = {
-    Name = "TestEc2"
+    Name = "Flask-Mysql-app"
   }
 }
-
