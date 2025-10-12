@@ -1,6 +1,8 @@
 # 🚀 2-Tier DevOps Project – Flask + MySQL  
 
-A complete **2-Tier Application** built with **Flask (Frontend + Backend)** and **MySQL (Database)**, deployed and automated using modern **DevOps tools and practices**.  
+A complete **2-Tier Application** built with **Flask (Python)** for backend and frontend, **MySQL** for the database, styled with **HTML, CSS, and Bootstrap**, and enhanced with **JavaScript**.  
+Containerized with **Docker**, deployed on **AWS**, and automated using modern **DevOps tools** such as **Terraform, Jenkins, and ArgoCD**.
+
 
 This project demonstrates end-to-end **CI/CD, GitOps, Infrastructure as Code (IaC), and Kubernetes orchestration** – a hands-on showcase of cloud-native DevOps.  
 
@@ -60,8 +62,6 @@ The project follows a **GitOps-driven workflow**, where every change in GitHub i
 
 ## 🔄 Workflow  
 
-## 🔄 Workflow  
-
 1. **Terraform provisions AWS infrastructure** → Creates EC2 instances, security groups, and networking setup  
 2. **Jenkins pipeline triggers** → Builds Flask app, runs tests, and creates Docker image  
 3. **Docker image pushed to DockerHub** → Stores versioned application containers  
@@ -74,16 +74,12 @@ The project follows a **GitOps-driven workflow**, where every change in GitHub i
 
 ---
 
-## 📊 Architecture Diagram  
-![Architecture Diagram](ProjectImages/Architecture.png)  
-**Architecture Diagram**
-
 ![Flask-Mysql-App](ProjectImages/App.png)  
-**Flask-MySQL App**
+**Flask-MySQL App**  
 
 ![Argocd](ProjectImages/ArgoCd.png)  
-**ArgoCD Setup**
+**ArgoCD Setup**  
 
 ![Grafana](ProjectImages/Grafana.png)  
-**Grafana Dashboard**
+**Grafana Dashboard**  
 
