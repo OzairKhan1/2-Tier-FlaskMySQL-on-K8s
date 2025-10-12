@@ -73,7 +73,7 @@ The project follows a **GitOps-driven workflow**, where every change in GitHub i
 
 
 ---
-now the text are shown but no image was pickedup  
+
 
 **Flask-MySQL App**  
 ![Flask-Mysql-App](ProjectImages/App.png)  
